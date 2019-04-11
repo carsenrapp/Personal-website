@@ -1,1 +1,1 @@
-My gallery project
+My personal website.
