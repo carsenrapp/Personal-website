@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Raleway', sans-serif
+}
+
+:root{
+  font-size: 16px;
+  --ghostWhite: #F8F8FF;
+  --almostBlack: #0c0c0c;
+  --darkGrey: #191919;
+  --darkGreyTransparent: #191919F2;
+  --mediumGrey: #808080;
+  --highlight: #FF4136;
+}
+
+.page{
+  display: grid;
+  grid-template-columns: 20% 1fr;
+}
+
+main{
+  display: block;
+}
+
+/****** NAVIGATION CSS ******/
+
+nav{
+  height: 100vh;
+  position: sticky; top: 0;
+  background-color: var(--darkGrey);
+
+  display: grid;
+  align-content: center;
+  justify-items: right;
+}
+
+.navItem{
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--ghostWhite);
+  text-align: right;
+  padding-right: 2.5rem;
+  user-select: none;
+
+  /* Stop width from being 100% */
+  width: intrinsic;           
+  width: -moz-max-content;    
+  width: -webkit-max-content; 
+}
+
+
+.navSub{
+  display: block;
+  font-size: 1.05rem;
+  padding-top: .4rem;
+}
+
+.navHead{
+  display: block;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+.navSelected{
+  color: var(--highlight);
+}
+
+.iconContainer{
+  padding-right: 2.5rem;
+  margin-top: 1rem;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: .6rem;
+}
+
+nav .icon > svg{
+  width: 1.8rem;
+  fill: var(--ghostWhite);
+}
+
+.hamburger{
+  width: 60px;
+  height: 50px;
+  position: fixed;
+  display:none;
+  top: 12px;
+  left: 12px;
+
+  display: none;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 18%;
+}
+
+.hamburgerBar{
+  background-color: var(--highlight);
+}
+
+/****** GALLERY CSS ******/
+
+.galleryMain{
+  background-color: var(--almostBlack);
+  color: var(--ghostWhite);
+  min-height: 100vh;
+}
+
+.listImages{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.listImages img{
+  cursor: pointer;
+}
+
+.listImages img:hover:before{
+  content: '';
+  display: block;
+  background-color: red;
+  width: 100px;
+  height: 100px;
+}
+
+.galleryImg{
+  width: 100%;
+  margin-top: -5px;
+}
+
+.fullImage{
+  height: 100vh;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
+.fullImage > img{
+  max-height: 100vh;
+  max-width: 80vw;
+  cursor: pointer;
+}
+
+/****** WEB PROJECTS CSS  ******/
+
+.webProjectsMain{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.webProjectsMain article{
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  margin: 1em;
+}
+
+.webProjectsMain h2{
+  font-size: 2.5em;
+}
+
+.webProjectsMain article img{
+  margin-top: .6em;
+  width: 100%;
+}
+
+.webProjectsMain p {
+  font-size: 1.2em;
+  margin-top: 1.4em;
+  margin-bottom: .8em;
+}
+
+.webProjectsMain .icon svg{
+  fill: var(--almostBlack)
+}
+
+.webProjectsMain .icon {
+  width: 2em;
+  margin-bottom: 2px;
+}
+
+.webProjectsMain .icon:hover{
+  border-bottom: 2px solid var(--almostBlack);
+  margin-bottom: 0;
+}
+
+
+/****** HOME CSS ******/
+
+.homeMain{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.homeMain h1{
+  font-size: 5.5em;
+}
+
+.homeMain p{
+  font-size: 1.6em;
+  margin-top: 6px;
+}
+
+.homeMain .highlight {
+  color: var(--highlight)
+}
+
+.homeMain .mobile{
+  display: none;
+}
+
+
+/****** MEDIA QUERIES ******/
+
+@media (max-width: 1100px) {
+  :root{
+    font-size: 20px;
+  }
+  .page{
+    grid-template-columns: 1fr;
+  }
+
+  nav{
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: 0;
+    background-color: var(--darkGreyTransparent);
+    justify-items: center;
+  }
+
+  .navItem,.iconContainer{
+    padding: 0;
+  }
+
+  .hamburger{
+    cursor: pointer;
+    display: grid;
+    z-index: 1;
+  }
+  .fullImage > img{
+    max-width: 100vw;
+  }
+
+  .webProjectsMain{
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .webProjectsMain article{
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0.5em;
+  }
+
+  .homeMain h1{
+    font-size: 4em;
+    padding: 0 5px;
+  }
+  
+  .homeMain p{
+    font-size: 1em;
+    padding: 0 5px;
+    margin-top: 6px;
+  }
+
+}
+
+@media (max-width:800px) {
+  .listImages{
+    grid-template-columns: 1fr;
+  }
+  .webProjectsMain{
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .span2{
+    grid-column: span 1;
+  }
+  .span2 p{
+    width: auto;
+  }
+  .homeMain h1{
+    font-size: 2.6em;
+    padding: 0 5px;
+  }
+  
+  .homeMain p{
+    font-size: 1em;
+    padding: 0 5px;
+    margin-top: 12px;
+  }
+  .homeMain .mobile{
+    display: block;
+  }
+
+}
